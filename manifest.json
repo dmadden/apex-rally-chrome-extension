@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+
+  "name": "APEX Rally Chrome Extension",
+  "description": "Adds some additional features to Rally work item cards to help APEX developers",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "popup.html",
+    "default_title": "APEX Rally Extension"
+  },
+
+  // "background": { "scripts": ["onPageLoad.js"] },
+
+  "permissions": [
+    "activeTab",
+    "storage",
+     "https://rally1.rallydev.com/*",
+     "http://edcbuildserver:8090/*",
+     "https://stash.guidewire.com/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["https://rally1.rallydev.com/*"],
+      "js": ["scripts/jquery-3.1.1.min.js", "scripts/onPageLoad.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "web_accessible_resources": [
+    "images/*.png"
+  ]
+}
